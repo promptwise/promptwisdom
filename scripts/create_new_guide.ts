@@ -44,8 +44,11 @@ date: "${currentDate.replace(/_/g, '-')}"
 // Create the new guide file
 fs.writeFileSync(targetFilePath, content);
 
+const branchName = `guide_${snakeCaseTitle}`;
+
 // Git add, commit, and push the new guide
 try {
+  execSync(`git checkout -b ${branchName}`);
   execSync(`git add ${targetFilePath}`);
   execSync(`git commit -m "Add new guide: ${titleArg}"`);
   execSync('git push');
