@@ -30,31 +30,43 @@ To view a blog post, simply navigate to the posts directory and open the Markdow
 
 ## Contributing
 
-We encourage our team members to contribute blog posts to this repository. Please follow these steps:
+We encourage our team members to contribute blog posts to this repository. To make the process easier, we have set up a few Yarn commands to help you create new content.
 
-1. Clone the repository and create a new branch for your blog post.
+### Prerequisites
 
+Make sure you have the repository pulled down locally and that you have Yarn installed on your system. If you don't have it installed, you can download it from [https://yarnpkg.com/](https://yarnpkg.com/).
+
+### Creating a New Guide
+
+To create a new guide, run the following command:
 ```bash
-git clone https://github.com/yourusername/promptwisdom.git
-cd promptwisdom
-git checkout -b your-post-branch
+yarn new-guide "The title of your guide"
 ```
 
-2. Create a new Markdown file in the posts directory, following the naming convention YYYY-MM-DD-post-title.md.
+This will create a new Markdown file in the `guides` directory with the specified title and today's date. Start writing your guide in the new file.
 
-3. Write your blog post in the Markdown file, using proper formatting and structuring.
 
-4. Commit your changes and push them to your branch.
+## Creating a New Blog Post
 
+To create a new blog post, run the following command:
 ```bash
-git add posts/YYYY-MM-DD-post-title.md
-git commit -m "Add new blog post: Post Title"
-git push -u origin your-post-branch
+yarn new-post "Title of Your Blog Post"
 ```
 
-5. Open a pull request on GitHub to merge your changes into the main branch. Request a review from a team member or maintainer.
+This will create a new Markdown file in the `posts` directory with the specified title and today's date. Start writing your blog post in the new file.
 
-6. Once your pull request is reviewed and approved, it will be merged into the main branch, and your blog post will be visible in the repository.
+## Creating a New Release Note
+
+To create new release notes, run the following command:
+```bash
+yarn new-release v1.0.2-whatever
+```
+
+This will create a new Markdown file in the `releases` directory with the specified version number and today's date. Fill in the release notes in detail, such as features, bug fixes, and improvements.
+
+## Committing Your Changes
+
+After using one of the above commands, the script will automatically add, commit, and push the new file to the repository. You can then create a pull request for your changes.
 
 ## Code of Conduct
 
