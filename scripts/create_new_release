@@ -59,8 +59,11 @@ version: "v${versionArg}"
 // Create the new release note file
 fs.writeFileSync(targetFilePath, content);
 
+const branchName = `release-${snakeCaseTitle}`;
+
 // Git add, commit, and push the new release note
 try {
+  execSync(`git checkout -b ${branchName}`);
   execSync(`git add ${targetFilePath}`);
   execSync(`git commit -m "Add new release note: v${versionArg}"`);
   execSync('git push');
