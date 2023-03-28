@@ -1,0 +1,25 @@
+{
+  "name": "promptwisdom",
+  "version": "1.0.0",
+  "description": "Company blog posts, guides, and release notes",
+  "main": "index.js",
+  "scripts": {
+    "guide:new": "ts-node scripts/create_new_guide.ts",
+    "post:new": "ts-node scripts/create_new_post.ts",
+    "release:new": "ts-node scripts/create_new_release.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/promptwise/promptwisdom.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/promptwise/promptwisdom/issues"
+  },
+  "homepage": "https://github.com/promptwise/promptwisdom#readme",
+  "devDependencies": {
+    "typescript": "^4.6.2",
+    "ts-node": "^10.4.0"
+  }
+}
