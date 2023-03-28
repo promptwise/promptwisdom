@@ -1,0 +1,70 @@
+import * as fs from 'fs';
+import * as path from 'path';
+import { execSync } from 'child_process';
+
+// Retrieve the version argument from the command line
+const versionArg = process.argv[2];
+
+if (!versionArg) {
+  console.error('Error: No version provided.');
+  process.exit(1);
+}
+
+// Generate a snake_case version of the version
+const snakeCaseVersion = versionArg
+  .toLowerCase()
+  .replace(/[^\w_]/g, '_');
+
+// Generate the current date in YYYY_MM_DD format
+const currentDate = new Date()
+  .toISOString()
+  .slice(0, 10)
+  .replace(/-/g, '_');
+
+// Generate the filename
+const fileName = `${currentDate}_v${snakeCaseVersion}.md`;
+
+// Set the target directory and file path
+const targetDirectory = 'releases';
+const targetFilePath = path.join(targetDirectory, fileName);
+
+// Define the content of the new release note
+const content = `---
+title: "Release v${versionArg}"
+date: "${currentDate.replace(/_/g, '-')}"
+version: "v${versionArg}"
+---
+
+# Release v${versionArg} (${currentDate.replace(/_/g, '-')})
+
+## Features
+
+- Feature 1
+- Feature 2
+- ...
+
+## Bug Fixes
+
+- Bug fix 1
+- Bug fix 2
+- ...
+
+## Improvements
+
+- Improvement 1
+- Improvement 2
+- ...
+`;
+
+// Create the new release note file
+fs.writeFileSync(targetFilePath, content);
+
+// Git add, commit, and push the new release note
+try {
+  execSync(`git add ${targetFilePath}`);
+  execSync(`git commit -m "Add new release note: v${versionArg}"`);
+  execSync('git push');
+  console.log(`New release note created: ${targetFilePath}`);
+} catch (error) {
+  console.error('Error while executing git commands:', error.message);
+}
