@@ -4,9 +4,9 @@
   "description": "Company blog posts, guides, and release notes",
   "main": "index.js",
   "scripts": {
-    "guide:new": "ts-node scripts/create_new_guide.ts",
-    "post:new": "ts-node scripts/create_new_post.ts",
-    "release:new": "ts-node scripts/create_new_release.ts"
+    "new-guide": "ts-node scripts/create_new_guide.ts",
+    "new-post": "ts-node scripts/create_new_post.ts",
+    "new-release": "ts-node scripts/create_new_release.ts"
   },
   "repository": {
     "type": "git",
